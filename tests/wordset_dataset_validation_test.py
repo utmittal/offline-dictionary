@@ -1,5 +1,4 @@
 import json
-from os import listdir
 from pathlib import Path
 from string import ascii_lowercase
 
@@ -23,14 +22,6 @@ def wordset_datafile_path_ids(path: Path) -> str:
     return path.absolute().__str__()
 
 
-def get_all_wordset_data_file_names():
-    data_file_names = []
-    for file_path in listdir(WORDSET_DATA_DIRECTORY):
-        data_file_names.append(Path(file_path).name.split('.')[0])
-
-    return data_file_names
-
-
 def wordset_key_value_generator():
     for file_path in WORDSET_DATA_DIRECTORY.glob('*.json'):
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -46,7 +37,7 @@ def wordset_key_value_ids(key_value: tuple[str, dict]) -> str:
 
 @pytest.mark.parametrize('valid_name', wordset_data_valid_file_name_generator())
 def test_data_file_exists_for_every_valid_name(valid_name):
-    data_file_names = get_all_wordset_data_file_names()
+    data_file_names = [p.stem for p in WORDSET_DATA_DIRECTORY.glob('*.json')]
 
     assert valid_name in data_file_names
 
@@ -78,4 +69,6 @@ def test_validate_top_level_words_have_valid_structure(key_value):
     for meaning in word_dict['meanings']:
         # in this particular case, we specify all values even though we don't care about id and labels. This is
         # because not every meaning entry has all the values, so we need to reverse our check.
+        # This is mostly to ensure the key names don't ever accidentally get corrupted/changed. Or that we don't add
+        # a key name we aren't aware of.
         assert meaning.keys() <= {'id', 'def', 'speech_part', 'example', 'synonyms', 'labels'}
