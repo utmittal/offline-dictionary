@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 
-from util.project_path import project_path
+from offlinedictionary.util.project_path import project_path
 
 
 @dataclass(frozen=True)
