@@ -31,14 +31,6 @@ def get_all_wordset_data_file_names():
     return data_file_names
 
 
-def wordset_top_level_key_generator():
-    for file_path in WORDSET_DATA_DIRECTORY.glob('*.json'):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            top_level_dict = json.load(f)
-
-        yield from top_level_dict.keys()
-
-
 def wordset_key_value_generator():
     for file_path in WORDSET_DATA_DIRECTORY.glob('*.json'):
         with open(file_path, 'r', encoding='utf-8') as f:
