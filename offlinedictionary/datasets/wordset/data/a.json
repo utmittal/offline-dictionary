@@ -109986,18 +109986,6 @@
             }
         ]
     },
-    "alkaline earth": {
-        "word": "alkaline earth",
-        "wordset_id": "1abc3a07e0",
-        "editors": [
-            "lefurjah"
-        ],
-        "contributors": [
-            "zellerpress",
-            "sabreuse",
-            "malrase"
-        ]
-    },
     "alkaline-earth metal": {
         "word": "alkaline-earth metal",
         "wordset_id": "da044b5387",
@@ -111505,18 +111493,6 @@
                     "ketone body"
                 ]
             }
-        ]
-    },
-    "acetoacetic acid": {
-        "word": "acetoacetic acid",
-        "wordset_id": "ae28887f2f",
-        "editors": [
-            "lefurjah"
-        ],
-        "contributors": [
-            "zellerpress",
-            "sabreuse",
-            "hcatlin"
         ]
     },
     "antimonial lead": {
